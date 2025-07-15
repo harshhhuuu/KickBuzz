@@ -137,7 +137,7 @@ def add_data():
             else:
                 message = 'Insertion Failed'
 
-    return render_template('ADD_data.html', columns=columns, message=message)
+    return render_template('add_data.html', columns=columns, message=message)
 
  
 @app.route('/k-means', methods = ['GET','POST'])
