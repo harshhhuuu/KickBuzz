@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCA Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+</head>
+
+<body>
+  <nav>
+    <ul>
+           <li><a href="/">Home</a></li>
+            <li><a href="/eda">Exploratory Data Analysis</a></li>
+            <li><a href="/train-model">Train Model</a></li>
+            <li><a href="/predict">Predict Overall</a></li>
+            <li><a href="/k-means">Clustering</a></li>
+            <li><a href="/add-data">Add Data</a></li>
+             <li><a href="/pca">PCA Analysis</a></li>
+             <li><a href="/regression">Regularization</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>PCA Analysis</h1>
+
+    <form id="pcaForm" action="/pca" method="post">
+      <label for="n_components">Number of Components</label>
+      <input
+        type="number"
+        id="n_components"
+        name="n_components"
+        min="1"
+        max="{{ max_components }}"
+        required
+      />
+      <button type="submit">Run PCA</button>
+    </form>
+
+    {% if pca_result %}
+      <h2>PCA Result (Explained Variance):</h2>
+      <pre>{{ pca_result }}</pre>
+    {% endif %}
+
+    {% if r2_score %}
+      <h2>R² Score:</h2>
+      <p><strong>{{ r2_score }}%</strong></p>
+    {% endif %}
+
+    {% if image_file %}
+      <h2>Explained Variance Chart:</h2>
+      <img src="{{ url_for('static', filename=image_file) }}" alt="PCA Variance Plot" style="max-width: 100%; height: auto;">
+    {% endif %}
+  </div>
+</body>
+</html>

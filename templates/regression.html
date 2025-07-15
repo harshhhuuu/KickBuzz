@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regression</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+</head>
+<body>
+    <nav>
+      <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/eda">Exploratory Data Analysis</a></li>
+            <li><a href="/train-model">Train Model</a></li>
+            <li><a href="/predict">Predict Overall</a></li>
+            <li><a href="/k-means">Clustering</a></li>
+            <li><a href="/add-data">Add Data</a></li>
+             <li><a href="/pca">PCA Analysis</a></li>
+             <li><a href="/regression">Regularization</a></li>
+      </ul>
+    </nav>
+    <h1>Regression Analysis</h1>
+    <form action="/regression" method="post">
+
+        <label for="model">Select Model:</label>
+        <select name="model" id="model">
+            <option value="linear">Linear Regression</option>
+            <option value="ridge">Ridge Regression</option>
+            <option value="lasso">Lasso Regression</option>
+             
+        </select>
+        <br><br>
+        <input type="submit" value="Run Regression">
+
+
+    </form>
+    {% if result %}
+    <h2>Regression Results</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+    {% if error %}    
+
+    <h2>Error</h2>
+    <p>{{ error }}</p>
+    {% endif %}
+
+
+
+     
+</body>
+</html>
+ 
+
+
+
+
+
+
+  
